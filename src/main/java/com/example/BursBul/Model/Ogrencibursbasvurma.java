@@ -1,18 +1,22 @@
 package com.example.BursBul.Model;
 
-import com.example.BursBul.Model.Burs;
-import com.example.BursBul.Model.Ogrenci;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "ogrencibursbasvurma")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ogrencibursbasvurma {
     @Id
     @Column(name = "ogrencibursbasvurma_id", nullable = false, length = 15)
-    private String id;
+    private String ogrencibursbasvurma_id;
 
     @Column(name = "puan", nullable = false, length = 5)
     private String puan;
@@ -24,37 +28,5 @@ public class Ogrencibursbasvurma {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "burs_id", nullable = false)
     private Burs burs;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPuan() {
-        return puan;
-    }
-
-    public void setPuan(String puan) {
-        this.puan = puan;
-    }
-
-    public Ogrenci getOgrenci() {
-        return ogrenci;
-    }
-
-    public void setOgrenci(Ogrenci ogrenci) {
-        this.ogrenci = ogrenci;
-    }
-
-    public Burs getBurs() {
-        return burs;
-    }
-
-    public void setBurs(Burs burs) {
-        this.burs = burs;
-    }
 
 }

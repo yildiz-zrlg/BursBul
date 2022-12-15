@@ -1,15 +1,19 @@
 package com.example.BursBul.Model;
 
-import com.example.BursBul.Model.Burs;
-import com.example.BursBul.Model.Ogrenci;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ogrencibursalma")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ogrencibursalma {
     @Id
     @Column(name = "ogrencibursalma_id", nullable = false, length = 15)
-    private String id;
+    private String ogrencibursalma_id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ogrenci_id", nullable = false)
@@ -18,29 +22,4 @@ public class Ogrencibursalma {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "burs_id", nullable = false)
     private Burs burs;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Ogrenci getOgrenci() {
-        return ogrenci;
-    }
-
-    public void setOgrenci(Ogrenci ogrenci) {
-        this.ogrenci = ogrenci;
-    }
-
-    public Burs getBurs() {
-        return burs;
-    }
-
-    public void setBurs(Burs burs) {
-        this.burs = burs;
-    }
-
 }

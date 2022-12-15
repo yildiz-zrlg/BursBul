@@ -3,13 +3,19 @@ package com.example.BursBul.Model;
 import com.example.BursBul.Model.Burs;
 import com.example.BursBul.Model.Kurum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "kurumbursverme")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Kurumbursverme {
     @Id
     @Column(name = "kurumbursverme_id", nullable = false, length = 15)
-    private String id;
+    private String kurumbursverme_id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "burs_id", nullable = false)
@@ -18,29 +24,5 @@ public class Kurumbursverme {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "kurum_id", nullable = false)
     private Kurum kurum;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Burs getBurs() {
-        return burs;
-    }
-
-    public void setBurs(Burs burs) {
-        this.burs = burs;
-    }
-
-    public Kurum getKurum() {
-        return kurum;
-    }
-
-    public void setKurum(Kurum kurum) {
-        this.kurum = kurum;
-    }
 
 }
